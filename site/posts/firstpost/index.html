@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introducing Contex.st | Contex.st</title>
+  <meta name="description" content="Contex.st, A powertool for media, data collection and sharing">
+
+  <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/static/css/main.css" media="all">
+
+</head>
+<body>
+  
+<nav class="navbar">
+  <div class="navbar__inner">
+    <a class="navbar__logo" href="/">Contex.st</a>
+
+    <div class="navbar__mobile-options">
+      <div class="navbar__button dark-toggle" aria-label="toggle dark theme">
+        <img src="/static/img/moon.svg" alt="">
+      </div>
+      <button class="navbar__button navbar__hamburger" aria-expanded="false" aria-label="toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#333333">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="navbar__links">
+      
+        <a class="navbar__link " href="/pages/about/">
+          About
+        </a>
+
+      <div class="navbar__button dark-toggle" aria-label="toggle dark theme">
+        <img src="/static/img/moon.svg" alt="">
+      </div>
+
+    </div>
+  </div>
+
+  <div class="navbar__mobile-links">
+    
+      <a class="navbar__mobile-link " href="/pages/about/">
+        About
+      </a>
+  </div>
+
+</nav>
+
+  
+<div class="container-sm">
+  <h1>Introducing Contex.st</h1>
+  <p>Introducing Contex.st</p>
+<h2>An app that solves your online collection, analysis and sharing</h2>
+<p>In one simple operation Contex.st can collect a nicely-readable webpage into ints internal database and share it on Nostr. One step! You collect the link's entire content, locally in your iOS device and it is now eaily searchable, sliceable diceable and re-share-able in smaller bits, better bits, mixed with related articles, images, media and your own thoughts. This is social media discourse on a new level.</p>
+<h3>Leverage the Share Button</h3>
+<p>Contex.st leveraes the share button in Safari and elsewhere inside iOS apps to pass the pages, media and (eventually) files and video over to the Contex.st internal database. Your images, pages, data of all kinds is stored locally on your device and synchronized via iCloud Sync to other Apple devices that are also logged into your iCloud account.</p>
+<p>Pick up your iPad, collect some data and later on your phone its all there.</p>
+<h4>Efficient Sharing</h4>
+<p>Contex.st is really efficient. As you select a page or image (soon video, documents) your Contex.st database ingests the data and optionally also immediately shares it to Nostr, the decentralized, permissionless internet protocol.</p>
+<h4>Quickly Searching Your Data</h4>
+<p>Contex.st extracts all text from images, urls and entire web pages. Everything is indexed and quickly searchable, allowing you ti find materials as fast as possible.</p>
+<h4>Demo Videos</h4>
+<div>
+<h5>Collect a Page</h5>
+<p>Collect the entire web page and immediately share it out to Nostr</p>
+<p><img src="/static/img/document-capture-and-post-note.gif" style="padding: 1em; height: 699px; width: 322px; border: 1px solid gray;" /></p>
+  </div>
+  <div>
+  <h5>Collect Media</h5>
+  <p>Collect an image and immediately share it out to Nostr</p>
+    <img src="/static/img/image-capture-and-post-note.gif" style="padding: 1em; height: 699px; width: 322px; border: 1px solid gray;" />
+  </div>
+
+  <br><hr>
+  <br><br>
+  <a href="/">&larr; Back home</a>
+</div>
+
+  <footer class="footer">
+  &copy; 2025 - Contex.st
+</footer>
+
+  <script>
+    const ham = document.querySelector('.navbar__hamburger')
+    const menu = document.querySelector('.navbar__mobile-links')
+    const darkToggleButtons = document.querySelectorAll('.dark-toggle')
+
+    function changeDarkToggleBtnIcon () {
+      darkToggleButtons.forEach(btn => {
+        if (btn.querySelector('img').src.indexOf('/static/img/moon.svg') !== -1) {
+          btn.querySelector('img').src = "/static/img/sun.svg"
+        } else {
+          btn.querySelector('img').src = "/static/img/moon.svg"
+        }
+      })
+    }
+
+    if (
+      localStorage.prefsDark === 'true' || 
+      (
+        window.matchMedia && 
+        window.matchMedia('(prefers-color-scheme: dark)').matches && 
+        localStorage.prefsDark !== 'false')
+      ) {
+      document.body.classList.add('dark')
+      changeDarkToggleBtnIcon()
+    }
+
+    ham.addEventListener('click', () => {
+      menu.classList.toggle('navbar__mobile-links--open')
+
+      let prevState = JSON.parse(ham.getAttribute('aria-expanded'))
+      ham.setAttribute('aria-expanded', !prevState)
+    })
+
+    darkToggleButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        changeDarkToggleBtnIcon()
+
+        if (document.body.classList.contains('dark')) {
+          document.body.classList.remove('dark')
+          localStorage.prefsDark = 'false'
+        } else {
+          document.body.classList.add('dark')
+          localStorage.prefsDark = 'true'
+        }
+
+      })
+    })
+  </script>
+</body>
+</html>
