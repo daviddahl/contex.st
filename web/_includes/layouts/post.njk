@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+hideTagsList: true
+---
+
+<div class="container-sm">
+  <h1>{{ title }}</h1>
+  {{ content | safe }}
+
+  <br><hr>
+  <br><br>
+  <a href="{{ '/' | url }}">&larr; Back home</a>
+</div>
