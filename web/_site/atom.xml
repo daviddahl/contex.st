@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>Contex.st: Collect, Research, Analyze, Share</title>
+	<subtitle>Lorem ipsum dolor sit amet consecuteor</subtitle>
+	
+	<link href="/atom.xml" rel="self"/>
+	<link href=""/>
+	<updated>2025-03-21T00:34:02Z</updated>
+	<id>https://example.com/</id>
+	<author>
+		<name>John Doe</name>
+		<email>johndoe@example.com</email>
+	</author>
+
+</feed>
